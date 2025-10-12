@@ -1,8 +1,5 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
 
-/* El resto de tu CSS igual... */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap');
 
 :root {
@@ -12,7 +9,10 @@
   --color2: #565449;
   --color3: #D8CFBC;
   --color4: #FFFBF4;
-  /* tus otras variables... */
+  --accent-sage: #a8b5a0;
+  --accent-stone: #d6ccc2;
+  --accent-warm: #f5f1eb;
+  --material-wood: #8b7355;
 }
 
 body {
@@ -20,4 +20,12 @@ body {
   color: var(--foreground);
   font-family: 'Inter', system-ui, -apple-system, sans-serif;
   font-weight: 300;
+}
+
+/* Tipografía */
+.text-display {
+  font-family: 'Playfair Display', serif;
+  font-weight: 500;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
 }

@@ -1,158 +1,23 @@
-@import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-/* Fuentes modernas */
+/* El resto de tu CSS igual... */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap');
 
 :root {
-  /* Variables CSS custom para máximo control */
   --background: #fafafa;
   --foreground: #1a1a1a;
-  --accent-sage: #a8b5a0;
-  --accent-stone: #d6ccc2;
-  --accent-warm: #f5f1eb;
-  --material-wood: #8b7355;
-  
-  /* Sombras sutiles y modernas */
-  --shadow-soft: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
-  --shadow-medium: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
-  --shadow-large: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
-}
-
-/* Reset y base styles */
-* {
-  box-sizing: border-box;
-  padding: 0;
-  margin: 0;
-}
-
-html {
-  scroll-behavior: smooth;
+  --color1: #11120D;
+  --color2: #565449;
+  --color3: #D8CFBC;
+  --color4: #FFFBF4;
+  /* tus otras variables... */
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
   font-family: 'Inter', system-ui, -apple-system, sans-serif;
-  font-feature-settings: 'cv11', 'ss01';
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-/* Resetear estilos por defecto de enlaces */
-a {
-  color: inherit;
-  text-decoration: none;
-}
-
-button {
-  background: transparent;
-  border: none;
-  cursor: pointer;
-}
-
-/* Tipografía jerárquica */
-.text-display {
-  font-family: 'Playfair Display', serif;
-  font-weight: 500;
-  line-height: 1.1;
-  letter-spacing: -0.02em;
-}
-
-/* Utilidades custom */
-.text-balance {
-  text-wrap: balance;
-}
-
-.shadow-soft {
-  box-shadow: var(--shadow-soft);
-}
-
-.shadow-medium {
-  box-shadow: var(--shadow-medium);
-}
-
-.shadow-large {
-  box-shadow: var(--shadow-large);
-}
-
-.bg-gradient-warm {
-  background: linear-gradient(135deg, #f5f1eb 0%, #fafafa 100%);
-}
-
-.bg-gradient-sage {
-  background: linear-gradient(135deg, #a8b5a0 0%, #d6ccc2 100%);
-}
-
-/* Componentes base */
-.container-custom {
-  max-width: 80rem;
-  margin-left: auto;
-  margin-right: auto;
-  padding-left: 1rem;
-  padding-right: 1rem;
-}
-
-@media (min-width: 640px) {
-  .container-custom {
-    padding-left: 1.5rem;
-    padding-right: 1.5rem;
-  }
-}
-
-@media (min-width: 1024px) {
-  .container-custom {
-    padding-left: 2rem;
-    padding-right: 2rem;
-  }
-}
-
-.btn-primary {
-  background-color: rgb(71 85 105);
-  color: white;
-  padding: 0.75rem 1.5rem;
-  border-radius: 0.5rem;
-  font-weight: 500;
-  box-shadow: var(--shadow-medium);
-  transition: background-color 0.2s;
-}
-
-.btn-primary:hover {
-  background-color: rgb(51 65 85);
-}
-
-.btn-primary:focus {
-  outline: none;
-  box-shadow: 0 0 0 2px rgb(71 85 105), 0 0 0 4px rgba(71, 85, 105, 0.2);
-}
-
-.btn-secondary {
-  background-color: rgb(231 229 228);
-  color: rgb(41 37 36);
-  padding: 0.75rem 1.5rem;
-  border-radius: 0.5rem;
-  font-weight: 500;
-  box-shadow: var(--shadow-soft);
-  transition: background-color 0.2s;
-}
-
-.btn-secondary:hover {
-  background-color: rgb(214 211 209);
-}
-
-.btn-secondary:focus {
-  outline: none;
-  box-shadow: 0 0 0 2px rgb(168 162 158), 0 0 0 4px rgba(168, 162, 158, 0.2);
-}
-
-/* Componente para navegación */
-.nav-link {
-  color: var(--foreground);
-  font-weight: 500;
-  text-decoration: none;
-  transition: color 0.2s;
-}
-
-.nav-link:hover {
-  color: rgb(71 85 105);
+  font-weight: 300;
 }

@@ -1,6 +1,6 @@
-@import "tailwindcss/base";
-@import "tailwindcss/components";
-@import "tailwindcss/utilities";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 /* Fuentes modernas */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap');
@@ -36,10 +36,20 @@ body {
   color: var(--foreground);
   font-family: 'Inter', system-ui, -apple-system, sans-serif;
   font-feature-settings: 'cv11', 'ss01';
-  font-variation-settings: 'opsz' 32;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+/* Resetear estilos por defecto de enlaces */
+@layer base {
+  a {
+    @apply text-inherit no-underline;
+  }
+  
+  button {
+    @apply bg-transparent border-none cursor-pointer;
+  }
 }
 
 /* Tipografía jerárquica */
@@ -84,14 +94,19 @@ body {
   }
   
   .btn-primary {
-    @apply bg-primary-500 text-white px-6 py-3 rounded-lg font-medium 
-           hover:bg-primary-600 transition-colors shadow-medium 
-           focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2;
+    @apply bg-slate-600 text-white px-6 py-3 rounded-lg font-medium 
+           hover:bg-slate-700 transition-colors shadow-medium 
+           focus:outline-none focus:ring-2 focus:ring-slate-500 focus:ring-offset-2;
   }
   
   .btn-secondary {
-    @apply bg-accent-warm text-foreground px-6 py-3 rounded-lg font-medium 
-           hover:bg-accent-stone transition-colors shadow-soft 
-           focus:outline-none focus:ring-2 focus:ring-accent-sage focus:ring-offset-2;
+    @apply bg-stone-200 text-stone-800 px-6 py-3 rounded-lg font-medium 
+           hover:bg-stone-300 transition-colors shadow-soft 
+           focus:outline-none focus:ring-2 focus:ring-stone-400 focus:ring-offset-2;
+  }
+  
+  /* Componente para navegación */
+  .nav-link {
+    @apply text-foreground hover:text-slate-600 transition-colors font-medium no-underline;
   }
 }

@@ -1,3 +1,9 @@
+import NavLinks from "./NavLinks";
+
 export const Header = () => {
-    return <header>Header Component</header>;
+    return (
+        <header>
+            <NavLinks />
+        </header>
+    );
 };

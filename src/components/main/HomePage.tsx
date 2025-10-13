@@ -1,10 +1,9 @@
-import { Header } from "../layout/header/Header";
+import Hero from "../layout/hero/Hero";
 
 export const HomePage = () => {
     return (
         <>
-            <Header />
-
+            <Hero />
         </>
     );
 };

@@ -15,12 +15,11 @@ const Hero = () => {
                 transition={{ duration: 2, ease: "easeOut" }}
             >
                 <Image
-                    src="https://images.unsplash.com/photo-1600607686527-6fb886090705?ixlib=rb-4.0.3&auto=format&fit=crop&w=2400&q=80"
+                    src="/img/house-banner.jpg"
                     alt="Modern Architecture"
                     fill
                     className="object-cover opacity-90"
                     priority
-                    unoptimized // Use unoptimized for external URL to avoid config issues in sandbox
                 />
             </motion.div>
 
@@ -31,8 +30,8 @@ const Hero = () => {
             <div className="absolute inset-0 z-[1] bg-gradient-to-t from-[#F5F5F5] via-transparent to-transparent opacity-80" />
 
             {/* Content */}
-            <Container className="relative z-10 h-full flex flex-col justify-center pt-20">
-                <div className="max-w-4xl space-y-6">
+            <Container className="relative z-10 h-full flex flex-col justify-start pt-32 md:pt-48 lg:pt-56">
+                <div className="max-w-4xl space-y-6 ml-auto text-right">
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
@@ -44,23 +43,32 @@ const Hero = () => {
                     </motion.div>
 
                     <motion.h1
-                        className="text-display text-5xl md:text-7xl lg:text-8xl text-[#1A1A1A] leading-[0.9]"
+                        className="text-display text-5xl md:text-7xl lg:text-8xl text-white leading-[0.9]"
                         initial={{ opacity: 0, y: 30 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: 0.7, duration: 0.8 }}
                     >
-                        Architecture Studio <br />
-                        <span className="italic font-light opacity-80">Designing space.</span>
+                        ¿Espacios sin vida? <br />
+                        <span className="italic font-light opacity-90">Diseñamos Transformaciones.</span>
                     </motion.h1>
 
-                    <motion.p
-                        className="max-w-md text-lg text-gray-700 font-light leading-relaxed"
+                    <motion.div
+                        className="flex flex-col md:flex-row gap-6 items-center justify-end pt-4"
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         transition={{ delay: 1, duration: 0.8 }}
                     >
-                        We create sustainable, innovative, and timeless architectural solutions that harmonize with the environment.
-                    </motion.p>
+                        <p className="text-white font-light leading-relaxed max-w-sm text-right order-2 md:order-1 drop-shadow-md">
+                            Más allá de la estética. Creamos atmósferas que elevan la calidad de vida y la eficiencia.
+                        </p>
+                        <motion.button
+                            whileHover={{ scale: 1.05 }}
+                            whileTap={{ scale: 0.95 }}
+                            className="bg-[#1A1A1A] text-white px-8 py-4 text-xs uppercase tracking-widest font-bold hover:bg-black transition-colors order-1 md:order-2"
+                        >
+                            Inicia tu Transformación
+                        </motion.button>
+                    </motion.div>
                 </div>
 
                 {/* Scroll Indicator */}

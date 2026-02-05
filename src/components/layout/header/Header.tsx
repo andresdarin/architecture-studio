@@ -50,14 +50,15 @@ export const Header = () => {
         <Link href="/" className="z-50 group relative">
           <div className="flex flex-col">
             <span className={cn(
-                "font-bold text-xl tracking-tighter uppercase transition-colors",
-                // Ensure text is readable when menu is open (usually white on dark overlay, or dark on light)
-                // Here we'll stick to a light menu background for consistency
-                "text-[#1A1A1A]"
+              "font-bold text-xl tracking-tighter uppercase transition-colors duration-500",
+              isScrolled || isMobileMenuOpen ? "text-[#1A1A1A]" : "text-white"
             )}>
-              ARC.Lab
+              ARC Studio
             </span>
-            <span className="text-[10px] tracking-[0.2em] uppercase opacity-60 text-[#1A1A1A]">Architecture</span>
+            <span className={cn(
+              "text-[10px] tracking-[0.2em] uppercase opacity-60 transition-colors duration-500",
+              isScrolled || isMobileMenuOpen ? "text-[#1A1A1A]" : "text-white"
+            )}>Architecture</span>
           </div>
         </Link>
 
@@ -67,19 +68,33 @@ export const Header = () => {
             <Link
               key={item.label}
               href={item.href}
-              className="text-sm font-medium uppercase tracking-wide text-[#1A1A1A] hover:opacity-60 transition-opacity"
+              className={cn(
+                "text-sm font-medium uppercase tracking-wide hover:opacity-60 transition-all duration-500",
+                isScrolled ? "text-[#1A1A1A]" : "text-white"
+              )}
             >
               {item.label}
             </Link>
           ))}
-          <Button variant="outline" size="sm" className="ml-4" onClick={() => window.location.href='#contact'}>
+          <Button
+            variant="outline"
+            size="sm"
+            className={cn(
+              "ml-4 transition-colors duration-500",
+              isScrolled ? "border-black/10 text-black hover:bg-black hover:text-white" : "border-white/20 text-white hover:bg-white hover:text-black"
+            )}
+            onClick={() => window.location.href = '#contact'}
+          >
             Contact
           </Button>
         </nav>
 
         {/* Mobile Toggle */}
         <button
-          className="md:hidden z-50 p-2 -mr-2 text-[#1A1A1A]"
+          className={cn(
+            "md:hidden z-50 p-2 -mr-2 transition-colors duration-500",
+            isScrolled || isMobileMenuOpen ? "text-[#1A1A1A]" : "text-white"
+          )}
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           aria-label="Toggle menu"
         >
@@ -136,7 +151,7 @@ export const Header = () => {
                     size="lg"
                     onClick={() => {
                       setIsMobileMenuOpen(false);
-                      window.location.href='#contact';
+                      window.location.href = '#contact';
                     }}
                   >
                     Contact Us

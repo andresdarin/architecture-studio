@@ -1,3 +1,4 @@
+import CustomCursor from "@/components/ui/CustomCursor";
 import type { Metadata } from "next";
 import { Inter, Playfair_Display } from "next/font/google";
 import "./globals.css";
@@ -13,7 +14,7 @@ const playfair = Playfair_Display({
 });
 
 export const metadata: Metadata = {
-  title: "Architecture Portfolio",
+  title: "Arc Studio",
   description: "Modern architecture portfolio",
 };
 
@@ -24,7 +25,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${inter.variable} ${playfair.variable}`}>
+      <body className={`${inter.variable} ${playfair.variable} md:cursor-auto`}>
         {children}
       </body>
     </html>

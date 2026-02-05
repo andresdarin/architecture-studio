@@ -1,8 +1,8 @@
 "use client";
 
-import React from "react";
+import React, { useState, useMemo } from "react";
 import Image from "next/image";
-import { motion } from "motion/react";
+import { motion, AnimatePresence } from "motion/react";
 import Section from "@/components/ui/Section";
 import Container from "@/components/ui/Container";
 
@@ -57,81 +57,104 @@ const projects = [
   },
 ];
 
+const categories = ["All", "Residential", "Commercial", "Interior", "Public"];
+
 const Projects = () => {
+  const [filter, setFilter] = useState("All");
+
+  const filteredProjects = useMemo(() => {
+    return filter === "All"
+      ? projects
+      : projects.filter((p) => p.category === filter);
+  }, [filter]);
+
   return (
-    <Section id="projects" className="bg-[#F5F5F5] relative">
+    <Section id="projects" className="bg-[#F5F5F5] relative min-h-screen">
       <Container>
-        <div className="flex flex-col md:flex-row justify-between items-end mb-16 md:mb-24">
-            <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6 }}
-            >
-                <h2 className="text-display text-4xl md:text-5xl lg:text-6xl text-[#1A1A1A] mb-4">
-                    Selected Works
-                </h2>
-                <div className="h-1 w-20 bg-[#1A1A1A]" />
-            </motion.div>
+        <div className="flex flex-col md:flex-row justify-between items-end mb-12">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
+            <h2 className="text-display text-4xl md:text-5xl lg:text-6xl text-[#1A1A1A] mb-4">
+              Selected Works
+            </h2>
+            <div className="h-1 w-20 bg-[#1A1A1A]" />
+          </motion.div>
 
-            <motion.p
-                className="max-w-md text-gray-600 mt-6 md:mt-0 text-right md:text-left"
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.3, duration: 0.6 }}
-            >
-                A collection of spaces designed with precision, light, and materiality.
-            </motion.p>
+          {/* Filter Bar */}
+          <motion.div
+            className="flex flex-wrap gap-4 mt-6 md:mt-0"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.3, duration: 0.6 }}
+          >
+            {categories.map((cat) => (
+              <button
+                key={cat}
+                onClick={() => setFilter(cat)}
+                className={`text-xs uppercase tracking-widest font-medium transition-colors ${filter === cat ? "text-black border-b border-black" : "text-gray-400 hover:text-black"
+                  }`}
+              >
+                {cat}
+              </button>
+            ))}
+          </motion.div>
         </div>
 
-        {/* Masonry Grid Layout using columns */}
-        <div className="columns-1 md:columns-2 lg:columns-3 gap-8 space-y-8">
-          {projects.map((project, index) => (
-            <motion.div
-              key={project.id}
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-50px" }}
-              transition={{ delay: index * 0.1, duration: 0.8 }}
-              className="break-inside-avoid relative group overflow-hidden cursor-pointer"
-            >
-              <div className={`relative w-full ${project.height} overflow-hidden bg-gray-200`}>
-                <Image
-                  src={project.src}
-                  alt={project.title}
-                  fill
-                  className="object-cover transition-transform duration-700 group-hover:scale-105"
-                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                />
+        {/* Masonry Grid Layout using columns with LayoutAnimation */}
+        <motion.div layout className="columns-1 md:columns-2 lg:columns-3 gap-8 space-y-8 min-h-[50vh]">
+          <AnimatePresence>
+            {filteredProjects.map((project) => (
+              <motion.div
+                layout
+                key={project.id}
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.9 }}
+                transition={{ duration: 0.5 }}
+                className="break-inside-avoid relative group overflow-hidden cursor-pointer"
+              >
+                <div className={`relative w-full ${project.height} overflow-hidden bg-gray-200`}>
+                  <Image
+                    src={project.src}
+                    alt={project.title}
+                    fill
+                    className="object-cover transition-transform duration-700 group-hover:scale-105"
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                  />
 
-                {/* Overlay */}
-                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-500" />
+                  {/* Overlay */}
+                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-500" />
 
-                {/* Hover Content */}
-                <div className="absolute inset-0 flex flex-col justify-end p-8 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                  {/* Hover Content */}
+                  <div className="absolute inset-0 flex flex-col justify-end p-8 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
                     <div className="translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
-                        <span className="block text-xs font-medium tracking-widest text-white/80 uppercase mb-2">
-                            {project.category} • {project.year}
-                        </span>
-                        <h3 className="text-display text-3xl text-white">
-                            {project.title}
-                        </h3>
+                      <span className="block text-xs font-medium tracking-widest text-white/80 uppercase mb-2">
+                        {project.category} • {project.year}
+                      </span>
+                      <h3 className="text-display text-3xl text-white">
+                        {project.title}
+                      </h3>
                     </div>
+                  </div>
                 </div>
-              </div>
-            </motion.div>
-          ))}
-        </div>
+              </motion.div>
+            ))}
+          </AnimatePresence>
+        </motion.div>
 
         <div className="mt-20 flex justify-center">
-            <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="px-8 py-4 border border-[#1A1A1A] text-[#1A1A1A] uppercase tracking-widest text-xs font-bold hover:bg-[#1A1A1A] hover:text-white transition-colors"
-            >
-                View All Projects
-            </motion.button>
+          <motion.button
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            className="px-8 py-4 border border-[#1A1A1A] text-[#1A1A1A] uppercase tracking-widest text-xs font-bold hover:bg-[#1A1A1A] hover:text-white transition-colors"
+          >
+            View Project Archive
+          </motion.button>
         </div>
       </Container>
     </Section>

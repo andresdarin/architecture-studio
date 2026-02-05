@@ -1,0 +1,21 @@
+<svg width="512" height="512" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style>
+      .text { font-family: sans-serif; font-weight: bold; }
+    </style>
+  </defs>
+  
+  <g transform="translate(26, 156) scale(1)">
+    <!-- A (Triangle with dot) -->
+    <!-- Left leg -->
+    <path d="M80 200 L130 50 L140 50 L190 200 H155 L135 130 L115 200 H80 Z" fill="black" />
+    <!-- Dot -->
+    <circle cx="135" cy="170" r="18" fill="black" />
+
+    <!-- R -->
+    <path d="M200 50 H260 Q300 50 300 100 Q300 135 270 145 L310 200 H270 L235 150 H230 V200 H200 V50 Z M230 80 V120 H260 Q270 120 270 100 Q270 80 260 80 H230 Z" fill="black" />
+
+    <!-- C -->
+    <path d="M390 60 Q360 50 340 70 Q320 90 320 125 Q320 160 340 180 Q360 200 390 190 L395 215 Q350 230 320 200 Q290 170 290 125 Q290 80 320 50 Q350 20 395 35 Z" fill="black" />
+  </g>
+</svg>

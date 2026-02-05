@@ -2,7 +2,6 @@
 
 import Image from "next/image";
 import { motion } from "motion/react";
-import HeroBg from '@/../public/img/house-banner.jpg';
 import Container from "@/components/ui/Container";
 
 const Hero = () => {
@@ -16,12 +15,12 @@ const Hero = () => {
                 transition={{ duration: 2, ease: "easeOut" }}
             >
                 <Image
-                    src={HeroBg}
+                    src="https://images.unsplash.com/photo-1600607686527-6fb886090705?ixlib=rb-4.0.3&auto=format&fit=crop&w=2400&q=80"
                     alt="Modern Architecture"
                     fill
                     className="object-cover opacity-90"
                     priority
-                    placeholder="blur"
+                    unoptimized // Use unoptimized for external URL to avoid config issues in sandbox
                 />
             </motion.div>
 
